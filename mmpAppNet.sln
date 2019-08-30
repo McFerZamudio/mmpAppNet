@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "mmpAppNet", "mmpAppNet.vbproj", "{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D6B1042-7278-4C05-A777-BCD5AD9D0AB2}
+	EndGlobalSection
+EndGlobal
