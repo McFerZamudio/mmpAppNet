@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "mmpAppNet", "mmpAppNet.vbproj", "{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "mmpLibrerias", "..\mmpLibrerias\mmpLibrerias.vbproj", "{42B14F5C-5FB4-41AA-A5AC-88D7B5D9D9A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42A33CF1-3CD0-46F8-B6B2-920558F4E3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B14F5C-5FB4-41AA-A5AC-88D7B5D9D9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B14F5C-5FB4-41AA-A5AC-88D7B5D9D9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B14F5C-5FB4-41AA-A5AC-88D7B5D9D9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B14F5C-5FB4-41AA-A5AC-88D7B5D9D9A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
