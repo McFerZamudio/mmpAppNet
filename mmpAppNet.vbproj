@@ -256,6 +256,12 @@
     <Folder Include="App_Data\CSV\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mmpLibrerias\mmpLibrerias.vbproj">
+      <Project>{42b14f5c-5fb4-41aa-a5ac-88d7b5d9d9a8}</Project>
+      <Name>mmpLibrerias</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
