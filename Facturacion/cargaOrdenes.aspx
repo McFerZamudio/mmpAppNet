@@ -49,7 +49,7 @@
         &nbsp;<asp:Button ID="btn_Previsualizar" runat="server" Text="Previsualizacion de datos" Width="169px" />
     &nbsp;<asp:Label ID="lbl_resultados" runat="server"></asp:Label>
 &nbsp;<hr />  
-        <asp:Button ID="btn_clientes" runat="server" Enabled="False" Text="Clientes Cargados(0) - Error(0)" Width="212px" />
+        <asp:Button ID="btn_clientes" runat="server" Enabled="False" Text="Clientes Cargados(0) - Error(0)" Width="278px" />
         <br />
     <asp:GridView ID="GridView1" runat="server">  
     </asp:GridView>  

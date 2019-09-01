@@ -166,6 +166,8 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.vb" />
+    <Compile Include="Models\mmpContext.vb" />
     <Compile Include="modMain.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -254,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\CSV\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mmpLibrerias\mmpLibrerias.vbproj">
