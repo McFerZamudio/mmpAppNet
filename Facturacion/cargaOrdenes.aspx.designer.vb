@@ -41,6 +41,15 @@ Partial Public Class cargaOrdenes
     Protected WithEvents btn_Previsualizar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''btn_CargarDatos control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btn_CargarDatos As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''lbl_resultados control.
     '''</summary>
     '''<remarks>
@@ -48,6 +57,15 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lbl_resultados As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lbl_Archivo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lbl_Archivo As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''btn_clientes control.
