@@ -17,7 +17,6 @@ Public Class cargaOrdenes
     Protected Sub btn_CargarDatos_Click(sender As Object, e As EventArgs) Handles btn_CargarDatos.Click
         Dim cargaCSV As New mmpLibrerias.Facturacion
 
-
         filename = lbl_Archivo.Text
 
         dtsOrden = cargaCSV.fnc_CargaCSV(filename)
@@ -29,11 +28,7 @@ Public Class cargaOrdenes
         GridView1.DataSource = dtsOrden
         GridView1.DataBind()
 
-        Try
-            IO.File.Delete(filename)
-        Catch ex As Exception
 
-        End Try
 
     End Sub
 
@@ -66,6 +61,8 @@ Public Class cargaOrdenes
         With dtsOrden.Tables(0).Rows(_pos)
             Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 1, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
             Dim _ResultadoGeneral() As String = Split(_cliente.fnc_InsertaClientes(), "|")
+            Dim _Entro As Boolean = False
+
             Try
                 If _ResultadoGeneral(0) = "1" Then
                     buenos = buenos + 1
@@ -80,8 +77,12 @@ Public Class cargaOrdenes
                         buenos = buenos + 1
                         dtsOrden.Tables(0).Rows(_pos)("Estado") = "OK"
                         dtsOrden.Tables(0).Rows(_pos)("Observaciones") = "Cliente Actualizado"
+                        Exit Function
                     End If
                 End If
+
+                dtsOrden.Tables(0).Rows(_pos)("Estado") = "Error"
+                dtsOrden.Tables(0).Rows(_pos)("Observaciones") = _ResultadoGeneral(1)
             Catch ex As Exception
                 dtsOrden.Tables(0).Rows(_pos)("Estado") = "Error"
                 dtsOrden.Tables(0).Rows(_pos)("Observaciones") = _ResultadoGeneral(1)

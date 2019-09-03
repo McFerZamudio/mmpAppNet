@@ -166,6 +166,10 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909031648049_Crea_SP.Designer.vb">
+      <DependentUpon>201909031648049_Crea_SP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909031648049_Crea_SP.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Models\mmpContext.vb" />
     <Compile Include="modMain.vb" />
@@ -187,6 +191,9 @@
     <Compile Include="Controllers\HomeController.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909031648049_Crea_SP.resx">
+      <DependentUpon>201909031648049_Crea_SP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
