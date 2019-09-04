@@ -25,7 +25,5 @@ Namespace Migrations
             DropStoredProcedure("dbo.Movie_Insert")
         End Sub
 
-
-
     End Class
 End Namespace

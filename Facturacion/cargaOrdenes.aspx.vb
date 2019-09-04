@@ -59,7 +59,7 @@ Public Class cargaOrdenes
     End Function
     Private Function fnc_CargaCliente(_pos As Long)
         With dtsOrden.Tables(0).Rows(_pos)
-            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 1, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
+            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
             Dim _ResultadoGeneral() As String = Split(_cliente.fnc_InsertaClientes(), "|")
             Dim _Entro As Boolean = False
 
