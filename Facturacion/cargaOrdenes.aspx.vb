@@ -26,7 +26,7 @@ Public Class cargaOrdenes
 
         filename = Server.MapPath("~/App_Data/CSV/") + Path.GetFileName(FileUpload1.PostedFile.FileName).ToString
 
-        dtsOrden = cargaCSV.fnc_CargaCSVtoDTS(filename)
+        dtsOrden = cargaCSV.fnc_CargaCSVtoDTS(filename, False)
         If IsNothing(dtsOrden) = False Then
 
             GridView1.DataSource = dtsOrden
@@ -46,7 +46,7 @@ Public Class cargaOrdenes
         filename = lbl_Archivo.Text
         Using _cnx As New SqlClient.SqlConnection(cnxMaster)
             _cnx.Open()
-            dtsOrden = cargaCSV.fnc_CargaCSVtoDTS(filename)
+            dtsOrden = cargaCSV.fnc_CargaCSVtoDTS(filename, True)
             For i = 0 To dtsOrden.Tables(0).Rows.Count - 1
                 fnc_AgregaClientetoDB(i, _cnx)
             Next
@@ -64,25 +64,16 @@ Public Class cargaOrdenes
     Private Function fnc_AgregaGeneraltoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection, _TablaOBJ As Object, _tabla As String)
         With dtsOrden.Tables(0).Rows(_pos)
             'Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
-            Dim _ResultadoGeneral() As String = Split(_TablaOBJ.fnc_Inserta(_cnxMasterDB), "|")
+            '  Dim _ResultadoGeneral() As String = Split(_TablaOBJ.fnc_Inserta(_cnxMasterDB), "|")
+            Dim _ResultadoGeneral() As String = Split(_TablaOBJ.fnc_Migracion(_cnxMasterDB), "|")
+
+
 
             Try
                 If _ResultadoGeneral(0) = "1" Then
                     buenos = buenos + 1
-                    fnc_ValidaGrid(_pos, _tabla, "Creado", "OK")
+                    fnc_ValidaGrid(_pos, _tabla, _ResultadoGeneral(1), "OK")
                     Exit Function
-                End If
-
-                If _ResultadoGeneral(0) = "2601" Then
-                    _ResultadoGeneral = Split(_TablaOBJ.fnc_Actualiza(_cnxMasterDB), "|")
-                    If _ResultadoGeneral(0) = "1" Then
-                        buenos = buenos + 1
-                        fnc_ValidaGrid(_pos, _tabla, "Actualizado", "OK")
-                        Exit Function
-                    End If
-                    fnc_ValidaGrid(_pos, _tabla, _ResultadoGeneral(1), "Error")
-                Else
-                    fnc_ValidaGrid(_pos, _tabla, _ResultadoGeneral(1), "Error")
                 End If
 
                 dtsOrden.Tables(0).Rows(_pos)("EstadoGeneral") = "Error"
@@ -107,43 +98,16 @@ Public Class cargaOrdenes
             Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
             fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _cliente, "Cliente")
         End With
-
-
-        'With dtsOrden.Tables(0).Rows(_pos)
-        '    Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
-        '    Dim _ResultadoGeneral() As String = Split(_cliente.fnc_InsertaClientes(_cnxMasterDB), "|")
-
-        '    Try
-        '        If _ResultadoGeneral(0) = "1" Then
-        '            buenos = buenos + 1
-        '            fnc_ValidaGrid(_pos, "Cliente", "Creado", "OK")
-        '            Exit Function
-        '        End If
-
-        '        If _ResultadoGeneral(0) = "2601" Then
-        '            _ResultadoGeneral = Split(_cliente.fnc_ActualizaClientes(_cnxMasterDB), "|")
-        '            If _ResultadoGeneral(0) = "1" Then
-        '                buenos = buenos + 1
-        '                fnc_ValidaGrid(_pos, "Cliente", "Actualizado", "OK")
-        '                Exit Function
-        '            End If
-        '        End If
-
-        '        dtsOrden.Tables(0).Rows(_pos)("EstadoGeneral") = "Error"
-        '        fnc_ValidaGrid(_pos, "Cliente", "Creado", "Error")
-        '    Catch ex As Exception
-        '        dtsOrden.Tables(0).Rows(_pos)("Estado") = "Error"
-        '        dtsOrden.Tables(0).Rows(_pos)("Observaciones") = _ResultadoGeneral(1)
-        '    End Try
-
-
-        'End With
-
-        '    btn_clientes.Text = "Clientes Cargados(" & buenos & ") - Error(" & total - buenos & ")"
-
-
-
     End Function
+
+    Private Function fnc_AgregaProductostoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection)
+        With dtsOrden.Tables(0).Rows(_pos)
+            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
+            'fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _cliente, "Cliente")
+        End With
+    End Function
+
+
 #End Region
 
 #Region "Metodos Capa Presentacion"
@@ -154,8 +118,8 @@ Public Class cargaOrdenes
 
     Private Function fnc_ValidaGrid(_pos As Long, _Campo As String, _Accion As String, _Resultado As String) As Boolean
         Try
-            dtsOrden.Tables(0).Rows(_pos)("Estado" & _Campo) = _Resultado
-            dtsOrden.Tables(0).Rows(_pos)("Observaciones" & _Campo) = _Accion
+            dtsOrden.Tables(0).Rows(_pos)("Estado " & _Campo) = _Resultado
+            dtsOrden.Tables(0).Rows(_pos)("Observaciones " & _Campo) = _Accion
             Return True
         Catch ex As Exception
             Return False
