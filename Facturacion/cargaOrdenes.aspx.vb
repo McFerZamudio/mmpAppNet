@@ -49,6 +49,8 @@ Public Class cargaOrdenes
             dtsOrden = cargaCSV.fnc_CargaCSVtoDTS(filename, True)
             For i = 0 To dtsOrden.Tables(0).Rows.Count - 1
                 fnc_AgregaClientetoDB(i, _cnx)
+                fnc_AgregaProductostoDB(i, _cnx)
+                fnc_AgregaFacturatoDB(i, _cnx)
             Next
             _cnx.Close()
             _cnx.Close()
@@ -63,11 +65,7 @@ Public Class cargaOrdenes
 #Region "Capa Datos"
     Private Function fnc_AgregaGeneraltoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection, _TablaOBJ As Object, _tabla As String)
         With dtsOrden.Tables(0).Rows(_pos)
-            'Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
-            '  Dim _ResultadoGeneral() As String = Split(_TablaOBJ.fnc_Inserta(_cnxMasterDB), "|")
             Dim _ResultadoGeneral() As String = Split(_TablaOBJ.fnc_Migracion(_cnxMasterDB), "|")
-
-
 
             Try
                 If _ResultadoGeneral(0) = "1" Then
@@ -76,10 +74,10 @@ Public Class cargaOrdenes
                     Exit Function
                 End If
 
-                dtsOrden.Tables(0).Rows(_pos)("EstadoGeneral") = "Error"
+                dtsOrden.Tables(0).Rows(_pos)("Estado General") = "Error " & _ResultadoGeneral(1)
             Catch ex As Exception
-                dtsOrden.Tables(0).Rows(_pos)("Estado") = "Error"
-                dtsOrden.Tables(0).Rows(_pos)("Observaciones") = _ResultadoGeneral(1)
+                dtsOrden.Tables(0).Rows(_pos)("Estado General") = "Error " & ex.Message
+                'dtsOrden.Tables(0).Rows(_pos)("Observaciones") = _ResultadoGeneral(1)
             End Try
 
 
@@ -91,21 +89,27 @@ Public Class cargaOrdenes
 
     End Function
 
-
-
     Private Function fnc_AgregaClientetoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection)
         With dtsOrden.Tables(0).Rows(_pos)
-            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
+            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 1, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
             fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _cliente, "Cliente")
         End With
     End Function
 
     Private Function fnc_AgregaProductostoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection)
         With dtsOrden.Tables(0).Rows(_pos)
-            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 2, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
-            'fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _cliente, "Cliente")
+            Dim _Producto As New empresa_producto(cnxMaster, gbl_empresaID, .Item("ID Item Ebay"), .Item("Producto"), "", "", .Item("Imagen"), .Item("sku"), 1, 0, .Item("Precio de Compra"), .Item("Total"), .Item("Beneficio"), 0, 0, .Item("enlace a producto"))
+            fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _Producto, "Producto")
         End With
     End Function
+
+    Private Function fnc_AgregaFacturatoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection)
+        With dtsOrden.Tables(0).Rows(_pos)
+            Dim _Factura As New empresa_factura(cnxMaster, gbl_empresaID, 0, 0, .Item("fecha"), .Item("fecha"), 0, .Item("userid"), .Item("Comprador"), .Item("direccion"), .Item("direccion"), "", 1, 0, "Ebay", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0)
+            fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _Factura, "Factura")
+        End With
+    End Function
+
 
 
 #End Region
