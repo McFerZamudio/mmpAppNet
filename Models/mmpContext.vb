@@ -16,6 +16,8 @@ Public Class mmpContext
         my_mppLibreria.CreaTablaGeneral(Of mmpLibrerias.empresa_canalventa)("empresa_canalventa", modelBuilder)
         my_mppLibreria.CreaTablaGeneral(Of mmpLibrerias.empresa_cliente)("empresa_cliente", modelBuilder)
         my_mppLibreria.CreaTablaGeneral(Of mmpLibrerias.empresa_producto)("empresa_producto", modelBuilder)
+        my_mppLibreria.CreaTablaGeneral(Of mmpLibrerias.empresa_factura)("empresa_factura", modelBuilder)
+        my_mppLibreria.CreaTablaGeneral(Of mmpLibrerias.empresa_FacturaProducto)("empresa_FacturaProducto", modelBuilder)
 
     End Sub
 #Region "Configuracion"
@@ -26,6 +28,10 @@ Public Class mmpContext
     Public Property empresa_canalventa As DbSet(Of mmpLibrerias.empresa_canalventa)
     Public Property empresa_clientes As System.Data.Entity.DbSet(Of mmpLibrerias.empresa_cliente)
     Public Property empresa_producto As System.Data.Entity.DbSet(Of mmpLibrerias.empresa_producto)
+    Public Property empresa_factura As System.Data.Entity.DbSet(Of mmpLibrerias.empresa_factura)
+    Public Property empresa_FacturaProducto As System.Data.Entity.DbSet(Of mmpLibrerias.empresa_FacturaProducto)
+
+
 #End Region
     Public Sub New()
         Try

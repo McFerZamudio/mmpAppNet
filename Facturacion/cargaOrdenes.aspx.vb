@@ -1,5 +1,7 @@
 ﻿Imports mmpLibrerias
+Imports System.Globalization
 Imports System.IO
+Imports System.Threading
 
 Public Class cargaOrdenes
     Inherits System.Web.UI.Page
@@ -13,7 +15,6 @@ Public Class cargaOrdenes
         filename = Server.MapPath("~/App_Data/CSV/") + Path.GetFileName(FileUpload1.PostedFile.FileName).ToString
         FileUpload1.SaveAs(filename)
         fnc_CargaArchivoCSVtoGRID()
-
     End Sub
     Protected Sub btn_CargarDatos_Click(sender As Object, e As EventArgs) Handles btn_CargarDatos.Click
         fnc_ExportaCVStoDTS()
@@ -50,7 +51,10 @@ Public Class cargaOrdenes
             For i = 0 To dtsOrden.Tables(0).Rows.Count - 1
                 fnc_AgregaClientetoDB(i, _cnx)
                 fnc_AgregaProductostoDB(i, _cnx)
-                fnc_AgregaFacturatoDB(i, _cnx)
+
+                Dim _NroFactura As Long
+                _NroFactura = fnc_AgregaFacturatoDB(i, _cnx)
+                fnc_AgregaFacturaProductotoDB(_NroFactura, i, _cnx)
             Next
             _cnx.Close()
             _cnx.Close()
@@ -103,15 +107,36 @@ Public Class cargaOrdenes
         End With
     End Function
 
-    Private Function fnc_AgregaFacturatoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection)
+    Private Function fnc_AgregaFacturatoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection) As Long
         With dtsOrden.Tables(0).Rows(_pos)
-            Dim _Factura As New empresa_factura(cnxMaster, gbl_empresaID, 0, 0, .Item("fecha"), .Item("fecha"), 0, .Item("userid"), .Item("Comprador"), .Item("direccion"), .Item("direccion"), "", 1, 0, "Ebay", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0)
+            Dim _Factura As New empresa_factura
+
+            Dim en As New CultureInfo("es-ES")
+            Thread.CurrentThread.CurrentCulture = en
+            _Factura.CargaDatosGenerales(gbl_empresaID, 0, 0, .Item("fecha"), .Item("fecha"), 0, .Item("userid"), .Item("Comprador"), .Item("Dirección cliente"), .Item("Dirección cliente"), "", 1)
+
+            _Factura.CargaDatosVentas(0, "Ebay", 0, 0, 0, "", 0, "", 0, 0, 0, 0, .Item("Total"), 0, 0)
+
             fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _Factura, "Factura")
+
+            Return _Factura.ventadocumento_id
+
         End With
     End Function
 
+    Private Function fnc_AgregaFacturaProductotoDB(_NroFactura As Long, _pos As Long, _cnxMasterDB As SqlClient.SqlConnection)
+        With dtsOrden.Tables(0).Rows(_pos)
+            Dim _FacturaProducto As New empresa_FacturaProducto
+            Dim en As New CultureInfo("es-ES")
+            Thread.CurrentThread.CurrentCulture = en
+            _FacturaProducto.CargaProductoVenta(_NroFactura, .Item("ID Item Ebay"), .Item("imagen"), .Item("producto"), .Item("Total") / .Item("unidades"), .Item("sku"), .Item("enlace a producto"), .Item("Precio de Compra"), .Item("beneficio"))
+
+            fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _FacturaProducto, "ProductoVendido")
+
+        End With
 
 
+    End Function
 #End Region
 
 #Region "Metodos Capa Presentacion"
@@ -119,7 +144,6 @@ Public Class cargaOrdenes
         btn_clientes.Enabled = True
         btn_CargarDatos.Enabled = True
     End Sub
-
     Private Function fnc_ValidaGrid(_pos As Long, _Campo As String, _Accion As String, _Resultado As String) As Boolean
         Try
             dtsOrden.Tables(0).Rows(_pos)("Estado " & _Campo) = _Resultado
@@ -129,10 +153,6 @@ Public Class cargaOrdenes
             Return False
         End Try
     End Function
-
-
-
-
 #End Region
 
 End Class
