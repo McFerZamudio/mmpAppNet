@@ -129,7 +129,7 @@ Public Class cargaOrdenes
             Dim _FacturaProducto As New empresa_FacturaProducto
             Dim en As New CultureInfo("es-ES")
             Thread.CurrentThread.CurrentCulture = en
-            _FacturaProducto.CargaProductoVenta(_NroFactura, .Item("ID Item Ebay"), .Item("imagen"), .Item("producto"), Replace(.Item("unidades"), ".", ","), .Item("sku"), .Item("enlace a producto"), Replace(.Item("Total") / .Item("unidades"), ".", ","), Replace(.Item("Precio de Compra"), ".", ","), Replace(.Item("beneficio"), ".", ","))
+            _FacturaProducto.CargaProductoVenta(_NroFactura, .Item("ID Item Ebay"), .Item("imagen"), .Item("producto"), Replace(.Item("unidades"), ".", ","), .Item("sku"), .Item("enlace a producto"), Replace(.Item("Total") / .Item("unidades"), ".", ","), Replace(.Item("beneficio"), ".", ","))
 
             fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _FacturaProducto, "ProductoVendido")
 

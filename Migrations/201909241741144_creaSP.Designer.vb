@@ -6,14 +6,14 @@ Imports System.Resources
 
 Namespace Migrations
     <GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")>
-    Public NotInheritable Partial Class Crea_SP
+    Public NotInheritable Partial Class creaSP
         Implements IMigrationMetadata
     
-        Private ReadOnly Resources As New ResourceManager(GetType(Crea_SP))
+        Private ReadOnly Resources As New ResourceManager(GetType(creaSP))
         
         Private ReadOnly Property IMigrationMetadata_Id() As String Implements IMigrationMetadata.Id
             Get
-                Return "201909082200538_Crea_SP"
+                Return "201909241741144_creaSP"
             End Get
         End Property
         
