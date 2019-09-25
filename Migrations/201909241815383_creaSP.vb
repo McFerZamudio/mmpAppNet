@@ -3,7 +3,7 @@ Imports System.Data.Entity.Migrations
 Imports Microsoft.VisualBasic
 
 Namespace Migrations
-    Partial Public Class Crea_SP
+    Partial Public Class CreaSP
         Inherits DbMigration
 
         Public Overrides Sub Up()

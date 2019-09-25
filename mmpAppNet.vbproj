@@ -156,6 +156,7 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="Controllers\empresa_FacturaProductoController.vb" />
     <Compile Include="Facturacion\cargaOrdenes.aspx.designer.vb">
       <DependentUpon>cargaOrdenes.aspx</DependentUpon>
     </Compile>
@@ -163,6 +164,7 @@
       <DependentUpon>cargaOrdenes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controllers\empresa_facturaController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,6 +235,16 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\empresa_factura\Create.vbhtml" />
+    <Content Include="Views\empresa_factura\Delete.vbhtml" />
+    <Content Include="Views\empresa_factura\Details.vbhtml" />
+    <Content Include="Views\empresa_factura\Edit.vbhtml" />
+    <Content Include="Views\empresa_factura\Index.vbhtml" />
+    <Content Include="Views\empresa_FacturaProducto\Create.vbhtml" />
+    <Content Include="Views\empresa_FacturaProducto\Delete.vbhtml" />
+    <Content Include="Views\empresa_FacturaProducto\Details.vbhtml" />
+    <Content Include="Views\empresa_FacturaProducto\Edit.vbhtml" />
+    <Content Include="Views\empresa_FacturaProducto\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

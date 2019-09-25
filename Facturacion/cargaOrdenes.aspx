@@ -41,18 +41,21 @@
     display: inline-block;  
     font-size: 16px;  
 }  
+        .auto-style1 {
+            height: -42px;
+        }
     </style>  
-    <link href="../Content/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
 </head>  
 <body>  
     <form id="form1" runat="server">  
-        <asp:FileUpload ID="FileUpload1" multiple="false" runat="server" Width="563px" />
+        <asp:FileUpload ID="FileUpload1" multiple="false" runat="server" Width="100%" />
         &nbsp;<asp:Button ID="btn_Previsualizar" runat="server" Text="Previsualizacion de datos" Width="169px" />
     &nbsp;<asp:Button ID="btn_CargarDatos" runat="server" Text="Cargar Datos" Width="169px" />
     &nbsp;<asp:Label ID="lbl_resultados" runat="server"></asp:Label>
         <br />
         <asp:Label ID="lbl_Archivo" runat="server"></asp:Label>
-        <hr />  
+        <hr class="auto-style1" />  
         <asp:Button ID="btn_clientes" runat="server" Enabled="False" Text="Clientes Cargados(0) - Error(0)" Width="278px" />
         <br />
     <asp:GridView ID="GridView1" runat="server">  
