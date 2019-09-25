@@ -95,7 +95,7 @@ Namespace Controllers
             If ModelState.IsValid Then
                 db.Entry(empresa_FacturaProducto).State = EntityState.Modified
                 db.SaveChanges()
-                Return RedirectToAction("Index")
+                Return RedirectToAction("../empresa_FacturaProducto/Index/" & empresa_FacturaProducto.ventadocumento_id)
             End If
             ViewBag.ventadocumento_id = New SelectList(db.empresa_factura, "ventadocumento_id", "ventadocumento_venta_codigo_c25", empresa_FacturaProducto.ventadocumento_id)
             Return View(empresa_FacturaProducto)

@@ -94,5 +94,5 @@ End Code
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", New With { .id = Model.ventaproduco_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index/" & Model.ventaproduco_id)
 </p>

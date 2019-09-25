@@ -4,11 +4,9 @@ ViewData("Title") = "Index"
 Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
-<h2>Listado General</h2>
+<h2>Ventas Realizadas</h2>
+<p>FILTRO POR FECHA</p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>

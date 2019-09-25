@@ -141,7 +141,6 @@ Public Class cargaOrdenes
 
 #Region "Metodos Capa Presentacion"
     Private Sub sub_habilitaBotones()
-        btn_clientes.Enabled = True
         btn_CargarDatos.Enabled = True
     End Sub
     Private Function fnc_ValidaGrid(_pos As Long, _Campo As String, _Accion As String, _Resultado As String) As Boolean

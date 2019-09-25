@@ -68,15 +68,6 @@ Partial Public Class cargaOrdenes
     Protected WithEvents lbl_Archivo As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''btn_clientes control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents btn_clientes As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
     '''GridView1 control.
     '''</summary>
     '''<remarks>

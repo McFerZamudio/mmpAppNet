@@ -55,9 +55,6 @@
     &nbsp;<asp:Label ID="lbl_resultados" runat="server"></asp:Label>
         <br />
         <asp:Label ID="lbl_Archivo" runat="server"></asp:Label>
-        <hr class="auto-style1" />  
-        <asp:Button ID="btn_clientes" runat="server" Enabled="False" Text="Clientes Cargados(0) - Error(0)" Width="278px" />
-        <br />
     <asp:GridView ID="GridView1" runat="server">  
     </asp:GridView>  
     </form>  

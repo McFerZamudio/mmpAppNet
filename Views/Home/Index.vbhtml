@@ -1,31 +1,83 @@
-﻿@Code
+﻿<head>
+    <style type="text/css">
+        .auto-style1 {
+            width: 918px;
+        }
+        .auto-style2 {
+            color: #0000FF;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .auto-style3 {
+            color: #FF9900;
+            font-size: large;
+        }
+        .auto-style4 {
+            color: #0000FF;
+            font-weight: bold;
+            text-decoration: underline;
+            width: 279px;
+        }
+        .auto-style5 {
+            width: 279px;
+        }
+        .auto-style6 {
+            width: 100%;
+        }
+    </style>
+</head>
+<table cellspacing="0" class="auto-style1">
+    <tr>
+        <td class="auto-style4" style="vertical-align: top">
+            <br />
+            <table cellspacing="0" class="auto-style6">
+                <tr>
+                    <td><span class="auto-style3">Sincronizacion de Pedidos</span></td>
+                </tr>
+                <tr>
+                    <td><a href="" onclick="window.open('../../Facturacion/cargaOrdenes.aspx','Carga CSV','width=800,height=600')">Cargar Pedidos por CSV</a></td>
+                </tr>
+                <tr>
+                    <td>Via API</td>
+                </tr>
+            </table>
+        </td>
+        <td class="auto-style2" rowspan="3">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td class="auto-style5">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="auto-style5">&nbsp;</td>
+    </tr>
+</table>
+@Code
     ViewData("Title") = "Home Page"
 End Code
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>

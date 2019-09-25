@@ -2,6 +2,7 @@
     Inherits System.Web.Mvc.Controller
 
     Function Index() As ActionResult
+        ViewBag.Title = "Multi Market Places App"
         Return View()
     End Function
 
