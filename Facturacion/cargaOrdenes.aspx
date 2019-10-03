@@ -57,6 +57,7 @@
         <asp:Label ID="lbl_Archivo" runat="server"></asp:Label>
     <asp:GridView ID="GridView1" runat="server">  
     </asp:GridView>  
+        <asp:TextBox ID="TextBox1" runat="server" Height="166px" Visible="False" Width="797px"></asp:TextBox>
     </form>  
 </body>  
 </html>  

@@ -12,7 +12,7 @@ Option Explicit On
 
 
 Partial Public Class cargaOrdenes
-    
+
     '''<summary>
     '''form1 control.
     '''</summary>
@@ -21,7 +21,7 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
-    
+
     '''<summary>
     '''FileUpload1 control.
     '''</summary>
@@ -30,7 +30,7 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents FileUpload1 As Global.System.Web.UI.WebControls.FileUpload
-    
+
     '''<summary>
     '''btn_Previsualizar control.
     '''</summary>
@@ -39,7 +39,7 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_Previsualizar As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''btn_CargarDatos control.
     '''</summary>
@@ -48,7 +48,7 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_CargarDatos As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''lbl_resultados control.
     '''</summary>
@@ -57,7 +57,7 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lbl_resultados As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''lbl_Archivo control.
     '''</summary>
@@ -66,7 +66,7 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lbl_Archivo As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''GridView1 control.
     '''</summary>
@@ -75,4 +75,13 @@ Partial Public Class cargaOrdenes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
 End Class

@@ -28,16 +28,23 @@ Public Class cargaOrdenes
         filename = Server.MapPath("~/App_Data/CSV/") + Path.GetFileName(FileUpload1.PostedFile.FileName).ToString
 
         dtsOrden = cargaCSV.fnc_CargaCSVtoDTS(filename, False)
+        TextBox1.Text = "Cargo DTS"
         If IsNothing(dtsOrden) = False Then
 
             GridView1.DataSource = dtsOrden
             GridView1.DataBind()
+            TextBox1.Text = "Hizo binding"
             If GridView1.Rows.Count > 0 Then
+                TextBox1.Text = "CAnt " & GridView1.Rows.Count
                 total = GridView1.Rows.Count
                 lbl_resultados.Text = "Cantidad de ordenes PRE-VISUALIZADAS ==> " & GridView1.Rows.Count
                 sub_habilitaBotones()
                 lbl_Archivo.Text = filename
+                TextBox1.Text = "Agrego Nombre"
             End If
+        Else
+            TextBox1.Text = cargaCSV._Error
+            TextBox1.Visible = True
         End If
         GridView1.DataBind()
     End Function
