@@ -19,8 +19,6 @@ Public Class cargaOrdenes
     Protected Sub btn_CargarDatos_Click(sender As Object, e As EventArgs) Handles btn_CargarDatos.Click
         fnc_ExportaCVStoDTS()
     End Sub
-
-
 #Region "Metodos Capa Negocio"
     Private Function fnc_CargaArchivoCSVtoGRID() As Boolean
         Dim cargaCSV As New mmpLibrerias.Facturacion
@@ -35,7 +33,7 @@ Public Class cargaOrdenes
             GridView1.DataBind()
             TextBox1.Text = "Hizo binding"
             If GridView1.Rows.Count > 0 Then
-                TextBox1.Text = "CAnt " & GridView1.Rows.Count
+                TextBox1.Text = "Cant " & GridView1.Rows.Count
                 total = GridView1.Rows.Count
                 lbl_resultados.Text = "Cantidad de ordenes PRE-VISUALIZADAS ==> " & GridView1.Rows.Count
                 sub_habilitaBotones()
@@ -102,7 +100,10 @@ Public Class cargaOrdenes
 
     Private Function fnc_AgregaClientetoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection)
         With dtsOrden.Tables(0).Rows(_pos)
-            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), 1, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
+            Dim _paisID As Long
+
+            _paisID = fnc_BuscaPais(.Item("País"), _cnxMasterDB)
+            Dim _cliente As New empresa_cliente(cnxMaster, gbl_empresaID, .Item("UserID"), .Item("Comprador"), _paisID, "cliente_direccionfacturacion_txt", "Direccion envio", "Telefono", .Item("email"))
             fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _cliente, "Cliente")
         End With
     End Function
