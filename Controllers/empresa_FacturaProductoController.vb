@@ -16,7 +16,7 @@ Namespace Controllers
         Private db As New mmpContext
 
         '' GET: empresa_FacturaProducto
-        'Function Index() As ActionResult
+        'Function Index(ByVal id As Long?) As ActionResult
         '    Dim empresa_FacturaProducto = db.empresa_FacturaProducto.Include(Function(e) e.Factura)
         '    Return View(empresa_FacturaProducto.ToList())
         'End Function
@@ -30,7 +30,11 @@ Namespace Controllers
 
             Dim Filtrado = From s In db.empresa_FacturaProducto Select s
 
-            Filtrado = Filtrado.Where(Function(s) s.ventaproduco_id = id)
+            Filtrado = Filtrado.Where(Function(s) s.ventadocumento_id = id)
+            Dim f As New DataSet
+
+            Dim cant As Long = Filtrado.Count
+
 
 
             If IsNothing(Filtrado) Then

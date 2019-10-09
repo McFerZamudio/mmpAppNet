@@ -25,7 +25,7 @@ End Code
             @Html.DisplayNameFor(Function(model) model.cliente_codigo_c25)
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.pais_id)
+            @Html.DisplayNameFor(Function(model) model.Pais)
         </th>
          <th>
             @Html.DisplayNameFor(Function(model) model.canalventa_nombre_nom)
@@ -57,7 +57,7 @@ End Code
             @Html.DisplayFor(Function(modelItem) item.cliente_codigo_c25)
         </td>
         <td>
-            @Html.DisplayFor(Function(modelItem) item.pais_id)
+            @Html.DisplayFor(Function(modelItem) item.Pais.pais_nombre_nom)
         </td>
         <td>
             @Html.DisplayFor(Function(modelItem) item.canalventa_nombre_nom)

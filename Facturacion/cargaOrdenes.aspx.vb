@@ -53,7 +53,7 @@ Public Class cargaOrdenes
         Using _cnx As New SqlClient.SqlConnection(cnxMaster)
             _cnx.Open()
             dtsOrden = cargaCSV.fnc_CargaCSVtoDTS(filename, True)
-            For i = 0 To dtsOrden.Tables(0).Rows.Count - 1
+            For i = 0 To 25 'dtsOrden.Tables(0).Rows.Count - 1
                 fnc_AgregaClientetoDB(i, _cnx)
                 fnc_AgregaProductostoDB(i, _cnx)
 
@@ -118,10 +118,13 @@ Public Class cargaOrdenes
     Private Function fnc_AgregaFacturatoDB(_pos As Long, _cnxMasterDB As SqlClient.SqlConnection) As Long
         With dtsOrden.Tables(0).Rows(_pos)
             Dim _Factura As New empresa_factura
+            Dim _paisID As Long
+
+            _paisID = fnc_BuscaPais(.Item("País"), _cnxMasterDB)
 
             Dim en As New CultureInfo("es-ES")
             Thread.CurrentThread.CurrentCulture = en
-            _Factura.CargaDatosGenerales(gbl_empresaID, 0, 0, .Item("fecha"), .Item("fecha"), 0, .Item("userid"), .Item("Comprador"), .Item("Dirección cliente"), .Item("Dirección cliente"), "", 1)
+            _Factura.CargaDatosGenerales(gbl_empresaID, 0, 0, .Item("fecha"), .Item("fecha"), 0, .Item("userid"), .Item("Comprador"), .Item("Dirección cliente"), .Item("Dirección cliente"), "", _paisID)
 
             _Factura.CargaDatosVentas(0, "Ebay", 0, 0, 0, "", 0, "", 0, 0, 0, 0, .Item("Total"), 0, 0)
 
@@ -137,7 +140,7 @@ Public Class cargaOrdenes
             Dim _FacturaProducto As New empresa_FacturaProducto
             Dim en As New CultureInfo("es-ES")
             Thread.CurrentThread.CurrentCulture = en
-            _FacturaProducto.CargaProductoVenta(_NroFactura, .Item("ID Item Ebay"), .Item("imagen"), .Item("producto"), Replace(.Item("unidades"), ".", ","), .Item("sku"), .Item("enlace a producto"), Replace(.Item("Total") / .Item("unidades"), ".", ","), Replace(.Item("beneficio"), ".", ","))
+            _FacturaProducto.CargaProductoVenta(_NroFactura, .Item("ID Item Ebay"), .Item("imagen"), .Item("producto"), Replace(.Item("unidades"), ".", ","), .Item("sku"), .Item("enlace a producto"), Replace(.Item("Precio de Compra"), ".", ","), Replace(.Item("Total") / .Item("unidades"), ".", ","), Replace(.Item("beneficio"), ".", ","))
 
             fnc_AgregaGeneraltoDB(_pos, _cnxMasterDB, _FacturaProducto, "ProductoVendido")
 

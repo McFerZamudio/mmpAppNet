@@ -12,6 +12,8 @@
         Using lee As SqlClient.SqlDataReader = cmd.ExecuteReader
             If lee.Read Then
                 Return lee("pais_id")
+            Else
+                Return 1
             End If
         End Using
 
