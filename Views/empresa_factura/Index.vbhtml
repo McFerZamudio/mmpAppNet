@@ -69,11 +69,18 @@ End Code
             @Html.DisplayFor(Function(modelItem) item.total_item_costototal_dec)
         </td>
         <td>
+            @code
+                Dim routeValues As IDictionary(Of String, Object) = New Dictionary(Of String, Object)()
+                routeValues.Add("id", item.ventadocumento_id)
+                routeValues.Add("codigo", item.ventadocumento_id)
+            End Code
+
             @Html.ActionLink("Modificiar", "Edit", New With {.id = item.ventadocumento_id}) |
             @Html.ActionLink("Detalles Venta", "Details", New With {.id = item.ventadocumento_id}) |
             @Html.ActionLink("Productos Vendidos", "../empresa_FacturaProducto/Index", New With {.id = item.ventadocumento_id}))
+            @Html.ActionLink("Productos Vendidos2", "../empresa_FacturaProducto/Index", New RouteValueDictionary(routeValues)))
         </td>
     </tr>
-Next
+                Next
 
 </table>
