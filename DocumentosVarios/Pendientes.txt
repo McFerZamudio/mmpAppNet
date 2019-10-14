@@ -1,18 +1,19 @@
 1. empresa_FacturaProducto/Index
 
-Falta Precio de Venta UNITARIO
-Falta Precio de Venta TOTAL (UNITARIO x UNIDADES VENDIDAS)
-Falta Codigo ID de la venta
+Falta Precio de Venta UNITARIO					HECHO
+Falta Precio de Venta TOTAL (UNITARIO x UNIDADES VENDIDAS)	HECHO
+Falta Codigo ID de la venta					HECHO
 
 2. empresa_Factura
 
-Agregar al MODELO el Codigo ID de la venta del canal de venta
-Fecha Venta con formato solo FECHA
-Status = Saber si fue procesada
+Agregar al MODELO el Codigo ID de la venta del canal de venta	HECHO
+Fecha Venta con formato solo FECHA				HECHO	
+Status = Saber si fue procesada					HECHO en NRO FACTURA
 Ordenar BIEN precio de venta y Costo como debe ser
 Indicar Monto Final de IVA
-Que tome el nombre de CANAL DE VENTA desde el CSV
-Colocar Codigo ID de la venta del canal de venta
+Que tome el nombre de CANAL DE VENTA desde el CSV		NO SE FALTA
+Colocar Codigo ID de la venta del canal de venta		HECHO
+Procesado Ventana Emergente
 
 Filtros
 	Por Fecha
@@ -27,7 +28,6 @@ Agregar al MODELO el USUARIO y FECHA DE PROCESO la factura
 3. Carga Ordenes
 Validar que solo lo haga UNA VEZ
 
-4. empresa_Factura
 
 
 
