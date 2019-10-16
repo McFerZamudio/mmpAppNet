@@ -50,11 +50,11 @@ End Code
          <td>
              @code
                  If IsNothing(item.ventadocumento_fecha_procesamiento_dat) = True Then
-                     @Html.ActionLink("Factura: " & item.ventadocumento_venta_codigo_c25, "actionName", "controllerName", New With {Key .Id = "ids"}, New With {Key .target = "_blank", Key .width = "400px", Key .height = "400px"})
+                     @Html.ActionLink("Factura: " & item.ventadocumento_venta_codigo_c25, "actionName", "controllerName", New With {Key .Id = "ids"}, New With {Key .target = "_blank", Key .width = "400px", Key .height = "400px", Key .modal = "yes"})
                  Else
                      @<label>-</label>
                  End If
-             End Code
+                     End Code
          </td>
     <td>
         @Html.DisplayFor(Function(modelItem) item.ventadocumento_venta_NroControl_lon)
@@ -62,13 +62,13 @@ End Code
     <td>
         @CODE
             Dim FechaCorta As String = Format(item.ventadocumento_venta_fecha_dat, "dd/MM/yyyy")
-        End Code
+                     End Code
         @FechaCorta
     </td>
     <td>
         @CODE
             Dim FechaModificacion As String = Format(item.ventadocumento_fecha_modificacion_dat, "dd/MM/yyyy")
-        End Code
+                     End Code
         @FechaModificacion
     </td>
     <td>
@@ -89,9 +89,9 @@ End Code
     <td>
         @code
             Dim routeValues As IDictionary(Of String, Object) = New Dictionary(Of String, Object)()
-            routeValues.Add("id", item.ventadocumento_id)
-            routeValues.Add("CodigoVenta", item.ventadocumento_codigoventacanal_txt)
-        End Code
+                     routeValues.Add("id", item.ventadocumento_id)
+                     routeValues.Add("CodigoVenta", item.ventadocumento_codigoventacanal_txt)
+                     End Code
 
         @Html.ActionLink("Modificiar", "Edit", New With {.id = item.ventadocumento_id}) |
         @Html.ActionLink("Detalles Venta", "Details", New With {.id = item.ventadocumento_id}) |
