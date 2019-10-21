@@ -99,7 +99,15 @@ End Code
         <p style="color:black"><strong>Beneficio Total:</strong><p>@BeneficioTotal</p></p>
     </td>
     <td>
-        @Html.DisplayFor(Function(modelItem) item.producto_incidencia_txt)
+        @code
+            Dim _incidencia As String = item.producto_incidencia_txt
+
+            If _incidencia <> "" Then
+                @<a href="" onclick="window.open('empresa_FacturaProductoIncidencia','Carga CSV','width=800,height=600')">Cargar Pedidos por CSV</a>
+            Else
+                @<label style="color:green">Sin incidencias</label>
+            End If
+        End Code
     </td>
     <td>
         @Html.ActionLink("Modificar", "Edit", New With {.id = item.ventaproduco_id}) |
@@ -107,7 +115,6 @@ End Code
         @Html.ActionLink("Eliminar?", "Delete", New With {.id = item.ventaproduco_id})
     </td>
 </tr>
-
             Next
     <p>
         @Html.ActionLink("Regresar a Ventas Realizadas", "../empresa_Factura/Index")

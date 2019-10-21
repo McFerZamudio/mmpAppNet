@@ -124,7 +124,7 @@ Public Class cargaOrdenes
 
             Dim en As New CultureInfo("es-ES")
             Thread.CurrentThread.CurrentCulture = en
-            _Factura.CargaDatosGenerales(gbl_empresaID, 0, 0, .Item("fecha"), .Item("fecha"), 0, .Item("userid"), .Item("Comprador"), .Item("Dirección cliente"), .Item("Dirección cliente"), "", _paisID)
+            _Factura.CargaDatosGenerales(gbl_empresaID, 0, 0, .Item("fecha"), .Item("fecha"), gbl_usuario, 0, .Item("userid"), .Item("Comprador"), .Item("Dirección cliente"), .Item("Dirección cliente"), "", _paisID)
 
             _Factura.CargaDatosVentas(.Item("ID pedido Ebay"), 0, "Ebay", 0, 0, 0, "", 0, "", 0, 0, 0, 0, .Item("Total"), 0, 0)
 

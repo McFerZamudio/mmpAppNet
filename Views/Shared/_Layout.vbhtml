@@ -21,6 +21,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Ver Pedidos Cargados", "../empresa_factura", "Home")</li>
+                    <li>@Html.ActionLink("Ver Incidencias", "../IncidenciasDetalles", "Index")</li>
+                    <li>@Html.ActionLink("Maestro de Incidencias", "../empresa_incidenciatipo", "Index")</li>
                 </ul>
             </div>
         </div>

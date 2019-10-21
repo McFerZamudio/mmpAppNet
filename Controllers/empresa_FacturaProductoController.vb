@@ -26,16 +26,8 @@ Namespace Controllers
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
 
-            Dim empresa_FacturaProducto As empresa_FacturaProducto = db.empresa_FacturaProducto.Find(id)
-
             Dim Filtrado = From s In db.empresa_FacturaProducto Select s
-
             Filtrado = Filtrado.Where(Function(s) s.ventadocumento_id = id)
-            Dim f As New DataSet
-
-            Dim cant As Long = Filtrado.Count
-
-
 
             If IsNothing(Filtrado) Then
                 Return HttpNotFound()

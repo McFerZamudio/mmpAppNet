@@ -38,6 +38,24 @@
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>mmpAppNet.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="mmpAppNet.My.MySettings.cnxMaster-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=51.91.251.246%3bInitial Catalog=mmpApp_DB%3bPersist Security Info=True%3bUser ID=sa%3bPassword=mmpApp22072019" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\mmpAppNet.My.MySettings.cnxMaster-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="mmpAppNet.My.MySettings.cnxEmergencia-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28local%29\dcserver%3bInitial Catalog=mmpApp_DB%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\mmpAppNet.My.MySettings.cnxEmergencia-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,12 +80,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -155,7 +182,9 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="App_Start\WebApiConfig.vb" />
     <Compile Include="Controllers\empresa_FacturaProductoController.vb" />
+    <Compile Include="Controllers\incidenciasDetallesController.vb" />
     <Compile Include="Facturacion\cargaOrdenes.aspx.designer.vb">
       <DependentUpon>cargaOrdenes.aspx</DependentUpon>
     </Compile>
@@ -167,10 +196,6 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909241815383_creaSP.Designer.vb">
-      <DependentUpon>201909241815383_creaSP.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909241815383_creaSP.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Models\mmpContext.vb" />
     <Compile Include="modMain.vb" />
@@ -190,11 +215,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="Controllers\empresa_incidenciadetalleController.vb" />
+    <Compile Include="Controllers\empresa_incidenciatipoController.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909241815383_creaSP.resx">
-      <DependentUpon>201909241815383_creaSP.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -246,6 +270,17 @@
     <Content Include="Views\empresa_FacturaProducto\Details.vbhtml" />
     <Content Include="Views\empresa_FacturaProducto\Edit.vbhtml" />
     <Content Include="Views\empresa_FacturaProducto\Index.vbhtml" />
+    <Content Include="Views\incidenciasDetalles\Index.vbhtml" />
+    <Content Include="Views\empresa_incidenciatipo\Create.vbhtml" />
+    <Content Include="Views\empresa_incidenciatipo\Delete.vbhtml" />
+    <Content Include="Views\empresa_incidenciatipo\Details.vbhtml" />
+    <Content Include="Views\empresa_incidenciatipo\Edit.vbhtml" />
+    <Content Include="Views\empresa_incidenciatipo\Index.vbhtml" />
+    <Content Include="Views\empresa_incidenciadetalle\Create.vbhtml" />
+    <Content Include="Views\empresa_incidenciadetalle\Delete.vbhtml" />
+    <Content Include="Views\empresa_incidenciadetalle\Details.vbhtml" />
+    <Content Include="Views\empresa_incidenciadetalle\Edit.vbhtml" />
+    <Content Include="Views\empresa_incidenciadetalle\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
