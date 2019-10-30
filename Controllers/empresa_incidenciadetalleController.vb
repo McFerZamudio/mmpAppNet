@@ -22,7 +22,7 @@ Namespace Views
             End If
 
             Dim Filtrado = From s In db.empresa_incidenciadetalle Select s
-            Filtrado = Filtrado.Where(Function(s) s.incidenciatipo_id = id)
+            Filtrado = Filtrado.Where(Function(s) s.incidenciatipo_id = id).OrderBy(Function(s) s.incidenciadetalle_nombre_txt)
 
             If IsNothing(Filtrado) Then
                 Return HttpNotFound()
@@ -56,9 +56,10 @@ Namespace Views
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="incidenciadetalle_id,empresa_id,incidenciatipo_id,incidenciadetalle_nombre_txt")> ByVal empresa_incidenciadetalle As empresa_incidenciadetalle) As ActionResult
             If ModelState.IsValid Then
+                empresa_incidenciadetalle.empresa_id = gbl_empresaID
                 db.empresa_incidenciadetalle.Add(empresa_incidenciadetalle)
                 db.SaveChanges()
-                Return RedirectToAction("Index")
+                Return RedirectToAction("Index/" & empresa_incidenciadetalle.incidenciatipo_id)
             End If
             ViewBag.empresa_id = New SelectList(db.empresa_maestro, "empresa_id", "empresa_nombre_nom", empresa_incidenciadetalle.empresa_id)
             ViewBag.incidenciatipo_id = New SelectList(db.empresa_incidenciatipo, "incidenciatipo_id", "incidenciatipo_nombre_nom", empresa_incidenciadetalle.incidenciatipo_id)
